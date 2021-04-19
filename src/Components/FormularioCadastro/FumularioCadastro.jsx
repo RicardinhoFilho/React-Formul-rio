@@ -7,6 +7,7 @@ const FormularioCadastro = (props) => {
   const [cpf, setCpf] = useState("");
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(true);
+  const [erros, setErros] = useState({cpf:{valido:true, erroMensagem:""}});
 
   return (
     <form
@@ -42,6 +43,13 @@ const FormularioCadastro = (props) => {
         onChange={(event) => {
           setCpf(event.target.value);
         }}
+
+        onBlur={(event)=>{
+          const ehValido = props.validaCpf(cpf)
+          setErros({cpf:ehValido})
+        }}
+        error = {!erros.cpf.valido}
+        helperText={erros.cpf.erroMensagem}
         id="cpf"
         label="CPF"
         variant="outlined"
