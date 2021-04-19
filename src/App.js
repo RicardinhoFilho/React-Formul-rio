@@ -8,9 +8,13 @@ function App() {
   return (
     <Container component="article" maxWidth="sm">
      <Typography variant="h3" component="h1">Formulário Cadastro</Typography>
-     <FormularioCadastro/>
+     <FormularioCadastro onSubmit={onSubmitForm}/>
     </Container>
   );
+}
+
+function onSubmitForm(dados){
+  console.log(dados);
 }
 
 export default App;
